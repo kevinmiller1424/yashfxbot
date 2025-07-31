@@ -33,7 +33,8 @@ async def main():
     now_gst = now_utc.replace(tzinfo=pytz.utc).astimezone(gst)
 
     # Send only if it is exactly 01:00 AM GST on a Friday
-    if now_gst.weekday() == 4 and now_gst.hour == 1 and now_gst.minute == 0:
+  #  if now_gst.weekday() == 4 and now_gst.hour == 1 and now_gst.minute == 0:
+     if now_gst.weekday() == 3 and now_gst.hour == 14 and now_gst.minute == 12:
         await send_message()
     else:
         print(f"⏰ Not time yet: {now_gst.strftime('%A %H:%M GST')} — skipping.")
