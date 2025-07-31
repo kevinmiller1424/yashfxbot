@@ -1,0 +1,27 @@
+name: Telegram Scheduler
+
+on:
+  schedule:
+    - cron: '0 21 * * 4'  # Every Thursday 21:00 UTC = Friday 01:00 AM GST
+  workflow_dispatch:
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run bot
+      run: |
+        python bot.py
